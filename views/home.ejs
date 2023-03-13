@@ -1,0 +1,17 @@
+
+    
+    <div> </div>
+    
+    
+<section class="dishes">
+    <% for ( let dish of dishes) {%>
+    <div class="ui-card">
+        <img src="<%= dish.image_url %>" alt="">
+        <h2><a href="/dishdetails?dishid=<%= dish.id %>"><%= dish.title %></a></h2>
+    </div>
+    <% } %>
+
+
+    </section>
+
+
