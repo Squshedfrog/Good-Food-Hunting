@@ -10,9 +10,11 @@ const client = require('./db')
 const viewHelpers = require('./middlewares/view_helper')
 const usersController = require('./controllers/user_controller')
 
+
+
 const bcrypt = require('bcrypt');
 const session = require('express-session')
-
+const MemoryStore = require('memorystore')(session)
 
 // passing the request body ---- 
 app.use(express.urlencoded({ extended: true }))
@@ -23,11 +25,13 @@ app.use(methodOverride)
 app.use(logger);
 
 app.use(session({
-  secret: 'keyboard car',
+  cookie: { maxAge: 86400000 },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
   resave: false,
-  saveUninitialized: true,
+  secret: 'keyboard cat'
 }))
-
 
 app.use(setCurrentUser)
 app.use(viewHelpers)

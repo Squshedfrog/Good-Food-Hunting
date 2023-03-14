@@ -19,3 +19,5 @@ git branch -M main
 git push -u origin main
 
 github3ulige
+Good-Food-Hunting
+https://git.generalassemb.ly/squshedfrog/good-food
